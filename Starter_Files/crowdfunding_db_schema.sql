@@ -32,17 +32,17 @@ CREATE TABLE "Campaign" (
     "cf_id" int   NOT NULL,
     "contact_id" int   NOT NULL,
     "company_name" VARCHAR(100)   NOT NULL,
-    "description" VARCHAR(100)   NOT NULL,
-    "goal" INT   NOT NULL,
-    "pledged" INT   NOT NULL,
-    "outcome" VARCHAR(20)   NOT NULL,
+    "description" TEXT   NOT NULL,
+    "goal" numeric(10,2)   NOT NULL,
+    "pledged" numeric(10,2)   NOT NULL,
+    "outcome" VARCHAR(50)   NOT NULL,
     "backers_count" INT   NOT NULL,
-    "country" VARCHAR(5)   NOT NULL,
-    "currency" VARCHAR(5)   NOT NULL,
-    "launched_date" VARCHAR(15)   NOT NULL,
-    "end_date" VARCHAR(15)   NOT NULL,
-    "category_ids" VARCHAR(10)   NOT NULL,
-    "subcategory_ids" VARCHAR(10)   NOT NULL,
+    "country" VARCHAR(10)   NOT NULL,
+    "currency" VARCHAR(10)   NOT NULL,
+    "launched_date" DATE   NOT NULL,
+    "end_date" DATE   NOT NULL,
+    "category_id" VARCHAR(10)   NOT NULL,
+    "subcategory_id" VARCHAR(10)   NOT NULL,
     CONSTRAINT "pk_Campaign" PRIMARY KEY (
         "cf_id"
      )
@@ -51,9 +51,9 @@ CREATE TABLE "Campaign" (
 ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_contact_id" FOREIGN KEY("contact_id")
 REFERENCES "Contacts" ("contact_id");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_category_ids" FOREIGN KEY("category_ids")
+ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_category_id" FOREIGN KEY("category_id")
 REFERENCES "Category" ("category_ids");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_ids" FOREIGN KEY("subcategory_ids")
+ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_id" FOREIGN KEY("subcategory_id")
 REFERENCES "Subcategory" ("subcategory_ids");
 
